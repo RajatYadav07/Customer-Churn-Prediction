@@ -1,0 +1,74 @@
+{
+  "best_model": "Gradient Boosting",
+  "feature_names": [
+    "gender",
+    "SeniorCitizen",
+    "Partner",
+    "Dependents",
+    "tenure",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod",
+    "MonthlyCharges",
+    "TotalCharges"
+  ],
+  "model_results": {
+    "Logistic Regression": {
+      "accuracy": 0.763,
+      "roc_auc": 0.7352,
+      "precision": 0.3333,
+      "recall": 0.0128,
+      "f1_score": 0.0247
+    },
+    "Random Forest": {
+      "accuracy": 0.757,
+      "roc_auc": 0.7162,
+      "precision": 0.3953,
+      "recall": 0.0726,
+      "f1_score": 0.1227
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.76,
+      "roc_auc": 0.7363,
+      "precision": 0.3846,
+      "recall": 0.0427,
+      "f1_score": 0.0769
+    }
+  },
+  "feature_importance": {
+    "Contract": 0.48690888270276733,
+    "TotalCharges": 0.14400542657096854,
+    "MonthlyCharges": 0.141361964611145,
+    "tenure": 0.09783083378844541,
+    "InternetService": 0.044874321595011396,
+    "StreamingMovies": 0.01543809149197712,
+    "PhoneService": 0.009900018015824921,
+    "StreamingTV": 0.00919094092930792,
+    "OnlineSecurity": 0.008875944254014122,
+    "TechSupport": 0.007163258232103557,
+    "PaperlessBilling": 0.0061621225498685265,
+    "PaymentMethod": 0.006109009708357126,
+    "gender": 0.004842788392293811,
+    "Partner": 0.003840658495494531,
+    "OnlineBackup": 0.0036454330620370495
+  },
+  "confusion_matrix": [
+    [
+      750,
+      16
+    ],
+    [
+      224,
+      10
+    ]
+  ]
+}

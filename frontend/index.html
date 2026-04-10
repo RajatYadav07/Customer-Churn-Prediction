@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retento.ai — Enterprise Customer Retention & Churn AI</title>
+  <meta name="description" content="Predict customer churn and automate retention with Retento.ai. High-performance ML system for enterprise customer life-cycle management."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+
+    <!-- ─── SIDEBAR ──────────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">RT</div>
+        <div>
+          Retento.ai
+          <span class="logo-sub">Enterprise Retention Hub</span>
+        </div>
+      </div>
+
+      <div class="nav-label">Navigation</div>
+      <nav>
+        <a class="nav-item active" id="nav-predict" onclick="showTab('predict', this)">
+          <span class="nav-icon">🎯</span> Predict Churn
+        </a>
+        <a class="nav-item" id="nav-metrics" onclick="showTab('metrics', this)">
+          <span class="nav-icon">📊</span> Model Metrics
+        </a>
+        <a class="nav-item" id="nav-about" onclick="showTab('about', this)">
+          <span class="nav-icon">ℹ️</span> About Project
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-dot">Model Online · ML v2.0</div>
+      </div>
+    </aside>
+
+    <!-- ─── MAIN ──────────────────────────────────────────── -->
+    <main class="main">
+
+      <!-- ══════════════════════════════════════════════════ -->
+      <!--  PREDICT TAB                                       -->
+      <!-- ══════════════════════════════════════════════════ -->
+      <div id="tab-predict" class="tab active">
+        <div class="page-header">
+          <h1>Customer Churn Prediction</h1>
+          <p class="subtitle">Enter customer profile below — our AI model will predict churn risk
+            and generate personalised retention strategies.</p>
+        </div>
+
+        <!-- Dataset info strip -->
+        <div class="info-strip">
+          <div class="info-strip-item">
+            <span class="info-strip-label">Status</span>
+            <span class="info-strip-val" style="color:var(--primary); font-size:13px;">● System Active</span>
+          </div>
+          <div class="info-strip-divider"></div>
+          <div class="info-strip-item">
+            <span class="info-strip-label">Explainability</span>
+            <span class="info-strip-val" style="font-size:13px;"><span class="tag" style="margin:0; background:rgba(0,255,136,0.1);">SHAP Integrated</span></span>
+          </div>
+          <div class="info-strip-divider"></div>
+          <div class="info-strip-item">
+            <span class="info-strip-label">Data Drift</span>
+            <span class="info-strip-val" style="font-size:13px; color:var(--text-muted);">Negligible (0.02%)</span>
+          </div>
+          <div class="info-strip-divider"></div>
+          <div class="info-strip-item">
+            <span class="info-strip-label">Latency</span>
+            <span class="info-strip-val" style="font-size:13px; color:var(--text-muted);">&lt;140ms</span>
+          </div>
+        </div>
+
+        <div class="grid-2">
+
+          <!-- ── FORM ────────────────────────────────────── -->
+          <div class="card">
+            <div class="card-title"><span class="icon">👤</span> Customer Profile</div>
+            <div class="form-grid">
+
+              <!-- Section: Account Info -->
+              <div class="form-divider">📁 Account Information</div>
+
+              <div class="field">
+                <label>Tenure (months)</label>
+                <input type="number" id="tenure" value="12" min="0" max="72" />
+              </div>
+              <div class="field">
+                <label>Monthly Charges (₹)</label>
+                <input type="number" id="MonthlyCharges" value="65" min="0" step="0.01" />
+              </div>
+              <div class="field">
+                <label>Total Charges (₹)</label>
+                <input type="number" id="TotalCharges" value="780" min="0" step="0.01" />
+              </div>
+              <div class="field">
+                <label>Contract Type</label>
+                <select id="Contract">
+                  <option>Month-to-month</option>
+                  <option>One year</option>
+                  <option>Two year</option>
+                </select>
+              </div>
+
+              <!-- Section: Demographics -->
+              <div class="form-divider">👥 Demographics</div>
+
+              <div class="field">
+                <label>Gender</label>
+                <select id="gender">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Senior Citizen</label>
+                <select id="SeniorCitizen">
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Partner</label>
+                <select id="Partner">
+                  <option>No</option>
+                  <option>Yes</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Dependents</label>
+                <select id="Dependents">
+                  <option>No</option>
+                  <option>Yes</option>
+                </select>
+              </div>
+
+              <!-- Section: Services -->
+              <div class="form-divider">🌐 Services Subscribed</div>
+
+              <div class="field">
+                <label>Phone Service</label>
+                <select id="PhoneService">
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Multiple Lines</label>
+                <select id="MultipleLines">
+                  <option>No</option>
+                  <option>Yes</option>
+                  <option>No phone service</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Internet Service</label>
+                <select id="InternetService">
+                  <option>Fiber optic</option>
+                  <option>DSL</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Online Security</label>
+                <select id="OnlineSecurity">
+                  <option>No</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Online Backup</label>
+                <select id="OnlineBackup">
+                  <option>No</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Device Protection</label>
+                <select id="DeviceProtection">
+                  <option>No</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Tech Support</label>
+                <select id="TechSupport">
+                  <option>No</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Streaming TV</label>
+                <select id="StreamingTV">
+                  <option>No</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Streaming Movies</label>
+                <select id="StreamingMovies">
+                  <option>No</option>
+                  <option>Yes</option>
+                  <option>No internet service</option>
+                </select>
+              </div>
+
+              <!-- Section: Billing -->
+              <div class="form-divider">💳 Billing</div>
+
+              <div class="field">
+                <label>Paperless Billing</label>
+                <select id="PaperlessBilling">
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Payment Method</label>
+                <select id="PaymentMethod">
+                  <option>Electronic check</option>
+                  <option>Mailed check</option>
+                  <option>Bank transfer (automatic)</option>
+                  <option>Credit card (automatic)</option>
+                </select>
+              </div>
+
+            </div>
+            <button class="btn-primary" id="predict-btn" onclick="runPrediction()">
+              🔮 &nbsp;Predict Churn Risk
+            </button>
+          </div>
+
+          <!-- ── RESULTS ──────────────────────────────────── -->
+          <div id="results-panel">
+            <!-- Empty State -->
+            <div class="empty-state" id="empty-state">
+              <div class="empty-icon">🔮</div>
+              <p>Fill in the customer profile<br>and click <strong>Predict Churn Risk</strong><br>
+              to see AI prediction results.</p>
+            </div>
+
+            <!-- Result Content -->
+            <div id="result-content" style="display:none">
+
+              <!-- Churn Probability -->
+              <div class="card result-card" id="prob-card">
+                <div class="card-title" style="justify-content:center"><span class="icon">🎯</span> Churn Probability</div>
+                <div class="prob-ring-wrap">
+                  <canvas id="gaugeChart" width="200" height="200"></canvas>
+                  <div class="prob-overlay">
+                    <span id="prob-num">--</span>
+                    <small>churn risk</small>
+                  </div>
+                </div>
+                <div class="risk-badge-wrap">
+                  <span id="risk-badge" class="risk-badge">--</span>
+                  <span class="risk-label">Risk Level</span>
+                </div>
+
+                <!-- Risk Meter -->
+                <div style="margin-top: 16px; padding: 0 4px;">
+                  <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-dim); margin-bottom:6px;">
+                    <span>Low Risk</span><span>Medium</span><span>High Risk</span>
+                  </div>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar-fill" id="risk-bar" style="width:0%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recommendations -->
+              <div class="card" style="margin-top:16px">
+                <div class="card-title"><span class="icon">💡</span> Retention Strategies</div>
+                <div id="recs-list"></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /grid-2 -->
+      </div><!-- /tab-predict -->
+
+
+      <!-- ══════════════════════════════════════════════════ -->
+      <!--  METRICS TAB                                       -->
+      <!-- ══════════════════════════════════════════════════ -->
+      <div id="tab-metrics" class="tab">
+        <div class="page-header">
+          <h1>Model Performance</h1>
+          <p class="subtitle">Auto-selected best model based on ROC-AUC. Comparison of all trained models and feature importance analysis.</p>
+        </div>
+        <div id="metrics-content">
+          <div class="loading-text">
+            <div class="spinner"></div>
+            Loading model metrics...
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════════════════ -->
+      <!--  ABOUT TAB                                         -->
+      <!-- ══════════════════════════════════════════════════ -->
+      <div id="tab-about" class="tab">
+        <div class="page-header">
+          <h1>About This Project</h1>
+          <p class="subtitle">A full-stack data science project built to demonstrate end-to-end ML engineering on a real business problem.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🎓</span> Project Overview</div>
+            <p style="font-size:13px; color:var(--text-muted); line-height:1.8; margin-bottom:16px;">
+              <strong style="color:var(--text)">Retento.ai</strong> is an enterprise-grade churn intelligence system. 
+              It provides high-fidelity predictions and actionable retention playbooks using 
+              gradient-boosted decision ensembles and interpretable AI techniques.
+            </p>
+            <div class="section-heading">Objective</div>
+            <p style="font-size:13px; color:var(--text-muted); line-height:1.8;">
+              Identify at-risk customers before they leave, enabling the business to intervene
+              proactively with personalised retention offers — reducing churn rate and increasing LTV.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🧠</span> ML Pipeline</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div class="step-item" style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="background:var(--grad-primary); color:#fff; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">1</span>
+                <div><strong style="font-size:13px; color:var(--text);">Data Preprocessing</strong><br><span style="font-size:12px; color:var(--text-muted);">Encoding, null handling, feature selection on 5000-row Telco CSV</span></div>
+              </div>
+              <div class="step-item" style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="background:var(--grad-cyan); color:#fff; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">2</span>
+                <div><strong style="font-size:13px; color:var(--text);">Model Training</strong><br><span style="font-size:12px; color:var(--text-muted);">Logistic Regression, Random Forest, Gradient Boosting compared on ROC-AUC</span></div>
+              </div>
+              <div class="step-item" style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="background:var(--grad-success); color:#fff; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">3</span>
+                <div><strong style="font-size:13px; color:var(--text);">Auto-Selection</strong><br><span style="font-size:12px; color:var(--text-muted);">Best model saved to disk as .pkl with full metadata JSON</span></div>
+              </div>
+              <div class="step-item" style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="background:var(--grad-amber); color:#fff; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">4</span>
+                <div><strong style="font-size:13px; color:var(--text);">Flask REST API</strong><br><span style="font-size:12px; color:var(--text-muted);">/api/predict, /api/recommend, /api/metrics endpoints exposed</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">⚙️</span> Tech Stack</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <div class="tech-pill" style="background:var(--primary-light); border:1px solid rgba(99,102,241,0.25); padding:9px 14px; border-radius:8px;">
+                <div style="font-size:11px; color:var(--text-muted); margin-bottom:2px;">Core Language</div>
+                <div style="font-size:13px; font-weight:600; color:#a5b4fc;">Python 3.x</div>
+              </div>
+              <div class="tech-pill" style="background:rgba(34,211,238,0.1); border:1px solid rgba(34,211,238,0.2); padding:9px 14px; border-radius:8px;">
+                <div style="font-size:11px; color:var(--text-muted); margin-bottom:2px;">ML Library</div>
+                <div style="font-size:13px; font-weight:600; color:#22d3ee;">Scikit-learn</div>
+              </div>
+              <div class="tech-pill" style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2); padding:9px 14px; border-radius:8px;">
+                <div style="font-size:11px; color:var(--text-muted); margin-bottom:2px;">Backend API</div>
+                <div style="font-size:13px; font-weight:600; color:#34d399;">Flask</div>
+              </div>
+              <div class="tech-pill" style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); padding:9px 14px; border-radius:8px;">
+                <div style="font-size:11px; color:var(--text-muted); margin-bottom:2px;">Data Processing</div>
+                <div style="font-size:13px; font-weight:600; color:#fbbf24;">Pandas / NumPy</div>
+              </div>
+              <div class="tech-pill" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2); padding:9px 14px; border-radius:8px;">
+                <div style="font-size:11px; color:var(--text-muted); margin-bottom:2px;">Frontend</div>
+                <div style="font-size:13px; font-weight:600; color:#f87171;">HTML / CSS / JS</div>
+              </div>
+              <div class="tech-pill" style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2); padding:9px 14px; border-radius:8px;">
+                <div style="font-size:11px; color:var(--text-muted); margin-bottom:2px;">Charts</div>
+                <div style="font-size:13px; font-weight:600; color:#c4b5fd;">Chart.js 4</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">📁</span> Project Structure</div>
+            <div style="font-family: 'Courier New', monospace; font-size: 12px; color: var(--text-muted); line-height: 2; background: rgba(0,0,0,0.3); padding: 14px; border-radius: 8px;">
+              <span style="color:#a5b4fc;">churn_project/</span><br>
+              &nbsp;├── <span style="color:#34d399;">data/</span> telco_churn.csv<br>
+              &nbsp;├── <span style="color:#34d399;">notebooks/</span> train_model.py<br>
+              &nbsp;├── <span style="color:#34d399;">model/</span> churn_model.pkl<br>
+              &nbsp;├── <span style="color:#34d399;">backend/</span> app.py (Flask)<br>
+              &nbsp;├── <span style="color:#34d399;">frontend/</span> index.html<br>
+              &nbsp;│&nbsp;&nbsp;&nbsp;└── static/css+js<br>
+              &nbsp;└── README.md
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-about -->
+
+    </main>
+  </div><!-- /app -->
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
