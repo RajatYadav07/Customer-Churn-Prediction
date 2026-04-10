@@ -6,7 +6,9 @@
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7-F7931E?logo=scikitlearn&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-3.1-000000?logo=flask&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Project_Retento_Live-00ff88)
+[![Status](https://img.shields.io/badge/Status-Project_Retento_Live-00ff88)](https://retento-ai.onrender.com)
+
+**🔗 Live Dashboard:** [https://retento-ai.onrender.com](https://retento-ai.onrender.com)
 
 ---
 
