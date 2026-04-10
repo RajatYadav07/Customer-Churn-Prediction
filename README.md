@@ -12,7 +12,7 @@
 
 ## 📌 Business Problem
 
-Telecom companies lose **20–30% of customers** annually to churn. Each lost customer costs significantly more to replace than to retain. ChurnGuard solves this by:
+Telecom companies lose **20–30% of customers** annually to churn. Each lost customer costs significantly more to replace than to retain. Retento.ai solves this by:
 
 1. **Predicting** which customers are most likely to leave (churn probability %)
 2. **Classifying** risk level (Low / Medium / High)
@@ -176,7 +176,7 @@ Rule-based retention strategy generator based on customer attributes:
 | **ML Models** | Logistic Regression, Random Forest, Gradient Boosting |
 | **ML Library** | scikit-learn (Pipeline + StandardScaler) |
 | **Data Processing** | Pandas, NumPy |
-| **Model Serialisation** | Joblib (.pkl) |
+| **Model Serialisation** | Joblib (.joblib) |
 | **Backend API** | Flask (REST) |
 | **Frontend** | HTML5 / CSS3 / JavaScript |
 | **Charts** | Chart.js 4 |

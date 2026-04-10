@@ -58,8 +58,8 @@
         <!-- Dataset info strip -->
         <div class="info-strip">
           <div class="info-strip-item">
-            <span class="info-strip-label">Status</span>
-            <span class="info-strip-val" style="color:var(--primary); font-size:13px;">● System Active</span>
+            <span class="info-strip-label">Intelligence Edge</span>
+            <span class="info-strip-val" id="records-counter" style="font-size:13px; color:var(--text-muted);">0 Records</span>
           </div>
           <div class="info-strip-divider"></div>
           <div class="info-strip-item">
@@ -282,7 +282,10 @@
 
               <!-- Recommendations -->
               <div class="card" style="margin-top:16px">
-                <div class="card-title"><span class="icon">💡</span> Retention Strategies</div>
+                <div class="card-title" style="justify-content:space-between">
+                  <span><span class="icon">💡</span> Retention Playbook</span>
+                  <button onclick="downloadReport()" style="background:none; border:1px solid var(--border); color:var(--primary); font-size:10px; padding:4px 8px; border-radius:4px; cursor:pointer; font-weight:600;">📥 DOWNLOAD REPORT</button>
+                </div>
                 <div id="recs-list"></div>
               </div>
 
@@ -390,15 +393,24 @@
           <div class="card">
             <div class="card-title"><span class="icon">📁</span> Project Structure</div>
             <div style="font-family: 'Courier New', monospace; font-size: 12px; color: var(--text-muted); line-height: 2; background: rgba(0,0,0,0.3); padding: 14px; border-radius: 8px;">
-              <span style="color:#a5b4fc;">churn_project/</span><br>
-              &nbsp;├── <span style="color:#34d399;">data/</span> telco_churn.csv<br>
-              &nbsp;├── <span style="color:#34d399;">notebooks/</span> train_model.py<br>
-              &nbsp;├── <span style="color:#34d399;">model/</span> churn_model.pkl<br>
+              <span style="color:var(--primary);">retento_ai/</span><br>
+              &nbsp;├── <span style="color:#34d399;">data/</span> dataset.csv<br>
+              &nbsp;├── <span style="color:#34d399;">notebooks/</span> training.py<br>
+              &nbsp;├── <span style="color:#34d399;">model/</span> model.joblib<br>
               &nbsp;├── <span style="color:#34d399;">backend/</span> app.py (Flask)<br>
               &nbsp;├── <span style="color:#34d399;">frontend/</span> index.html<br>
               &nbsp;│&nbsp;&nbsp;&nbsp;└── static/css+js<br>
               &nbsp;└── README.md
             </div>
+          </div>
+
+          <div class="card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(0,255,136,0.05), rgba(0,0,0,0));">
+            <div class="card-title"><span class="icon">🛡️</span> Responsible AI & Security</div>
+            <p style="font-size:13px; color:var(--text-muted); line-height:1.8;">
+              Retento.ai is designed with **Privacy by Design** principles. Data is anonymized before processing,
+              and model transparency is ensured through integrated explainability layers. We continuously 
+              monitor for bias in predictions to ensure fair treatment across demographic segments.
+            </p>
           </div>
 
         </div>
